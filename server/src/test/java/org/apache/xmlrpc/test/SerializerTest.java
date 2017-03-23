@@ -19,11 +19,7 @@
 package org.apache.xmlrpc.test;
 
 import java.io.StringReader;
-import java.util.Calendar;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.TimeZone;
+import java.util.*;
 
 import javax.xml.parsers.SAXParserFactory;
 
@@ -121,7 +117,7 @@ public class SerializerTest extends TestCase {
 	 * @throws Exception The test failed.
 	 */
 	public void testMapParam() throws Exception {
-		final Map map = new HashMap();
+		final Map map = new LinkedHashMap();
 		map.put("2", new Integer(3));
 		map.put("3", new Integer(5));
 		final Object[] params = new Object[]{map};
@@ -132,8 +128,8 @@ public class SerializerTest extends TestCase {
 			"<?xml version=\"1.0\" encoding=\"US-ASCII\"?>"
 			+ "<methodCall><methodName>mapParam</methodName>"
 			+ "<params><param><value><struct>"
-			+ "<member><name>3</name><value><i4>5</i4></value></member>"
 			+ "<member><name>2</name><value><i4>3</i4></value></member>"
+			+ "<member><name>3</name><value><i4>5</i4></value></member>"
 			+ "</struct></value></param></params></methodCall>";
 		assertEquals(expect, got);
 	}
