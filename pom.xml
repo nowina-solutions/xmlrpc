@@ -44,7 +44,6 @@
     <module>common</module>
     <module>client</module>
     <module>server</module>
-    <module>dist</module>
   </modules>
 
   <issueManagement>
@@ -411,11 +410,16 @@
   </reporting>
 
   <distributionManagement>
-    <site>
-      <id>${xmlrpc.www.id}</id>
-      <name>XML-RPC directory on ws.apache.org</name>
-      <url>${xmlrpc.www.url}</url>
-    </site>
+    <repository>
+      <id>forge.nowina.lu</id>
+      <name>Internal repository</name>
+      <url>http://forge.nowina.local/nexus/content/repositories/releases/</url>
+    </repository>
+    <snapshotRepository>
+      <id>forge.nowina.lu</id>
+      <name>Internal repository</name>
+      <url>http://forge.nowina.local/nexus/content/repositories/snapshots/</url>
+    </snapshotRepository>
   </distributionManagement>
 
   <profiles>
