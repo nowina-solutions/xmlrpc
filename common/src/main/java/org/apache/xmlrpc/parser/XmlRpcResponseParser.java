@@ -58,7 +58,15 @@ public class XmlRpcResponseParser extends RecursiveTypeParserImpl {
 			super.setResult(pResult);
 		} else {
 			Map map = (Map) pResult;
-			Integer faultCode = (Integer) map.get("faultCode");
+			Integer faultCode=0;
+			if (map.get("faultCode") instanceof Integer) {
+				faultCode = (Integer) map.get("faultCode");
+			}else if (map.get("faultCode") instanceof String){
+				faultCode = Integer.parseInt((String) map.get("faultCode"));
+			}else{
+				throw new SAXParseException("Unknow faultCode type", getDocumentLocator());
+			}
+
 			if (faultCode == null) {
 				throw new SAXParseException("Missing faultCode", getDocumentLocator());
 			}
@@ -66,7 +74,7 @@ public class XmlRpcResponseParser extends RecursiveTypeParserImpl {
 				errorCode = faultCode.intValue();
 			} catch (NumberFormatException e) {
 				throw new SAXParseException("Invalid faultCode: " + faultCode,
-											getDocumentLocator());
+											 getDocumentLocator());
 			}
 			errorMessage = (String) map.get("faultString");
             Object exception = map.get("faultCause");
