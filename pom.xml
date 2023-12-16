@@ -413,12 +413,12 @@
     <repository>
       <id>forge.nowina.lu</id>
       <name>Internal repository</name>
-      <url>http://forge.nowina.local/nexus/content/repositories/releases/</url>
+      <url>https://forge.nowina.local/nexus/content/repositories/releases/</url>
     </repository>
     <snapshotRepository>
       <id>forge.nowina.lu</id>
       <name>Internal repository</name>
-      <url>http://forge.nowina.local/nexus/content/repositories/snapshots/</url>
+      <url>https://forge.nowina.local/nexus/content/repositories/snapshots/</url>
     </snapshotRepository>
   </distributionManagement>
 
